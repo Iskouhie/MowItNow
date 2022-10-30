@@ -1,23 +1,26 @@
 package MowItNow
+/** Represents a lawnmower (la tondeuse).
+ *
+ * @constructor Create a lawnmower with a specified `p` , `d` and `t`
+ * @param p The position of the lawnmower
+ * @param d The direction of the lawnmower
+ * @param t On what terrain is the lawnmower
+ */
 
-// Creating a constructor  with a parameter list
 class Tondeuse (p: Array[Int], d: Direction.Value, t: Terrain){
-  //writing a precondition using the require method
+
   require(p(0) > 0 && p(1) > 0, "La combinaison des coordonnees representant la position de la tondeuse doit etre superieur a 0")
 
-  // Declaring the parameters in the constructor parameter list
   var position:Array[Int] = p
   var direction:Direction.Value = d
   var terrain: Terrain = t
 
-//Class functions
-  // Creating the function 'turn' for turning the 'Tondeuse' left (when the "G" pattern gets matched) or right (when the "D" pattern gets matched)
-  // Using pattern matching technique for checking the given sequence of tokens for the presence of the specific pattern
-  /*
-  If the value of 'dir' which is passed in 'turn' method call matches with any of the cases,
-  the expressions within that case will be evaluated. And the same for 'direction'
-   */
 
+  /** Turn the Tondeuse based on `dir`.
+   * @param dir The direction the Tondeuse is going to turn.
+   *            If it matches with "G" it will turn left.
+   *            If it matches with "D" it will turn right.
+   */
   def turn(dir: String): Any = dir match {
     case "G" => {
       this.direction match {
@@ -38,9 +41,10 @@ class Tondeuse (p: Array[Int], d: Direction.Value, t: Terrain){
     case _ => "error"
   }
 
-  // Creating the function 'move' for moving the 'Tondeuse' one step forward in the direction it faces.
-  // Using the "if" conditional statement to move the 'Tondeuse' only when the position after the movement won't be outside the lawn.
 
+  /** Move the Tondeuse based on defined `direction`,`position` and `terrain`.
+   * Use if-else statement to keep it in the terrain.
+   */
   def move () {
     this.direction match {
       case Direction.N => {

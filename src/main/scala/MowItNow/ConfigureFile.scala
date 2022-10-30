@@ -1,9 +1,13 @@
 package MowItNow
 import MowItNow.Direction.Direction
 import scala.io.Source
-// Creating a constructor with a parameter list
+/** For opening an input file to configure the initial settings
+ *
+ * @constructor Create an input file with a specified `filename`.
+ * @param filename the input file
+ */
 class ConfigureFile (filename: String) {
-  // Declaring the parameters in the constructor parameter list
+// Declaring mutable variables
   var resource = Source.fromResource(filename).getLines.toList
   var terrain_size : Array [Int] = Array(0,0)
   var position_tond1 : Array [Any] = Array ( 0, 0 , Direction.N)
@@ -11,9 +15,9 @@ class ConfigureFile (filename: String) {
   var move_tond1 : Array [Char] = Array ()
   var move_tond2 : Array [Char] = Array ()
 
-  //Creating a function
+  /** Reading the input file
+   */
   def init (): Unit = {
-    // Using the Try-Catch segment to control the exceptions
     try{
       val coord_xmax = resource(0).split(" ")(0).toInt
       val coord_ymax = resource(0).split(" ")(1).toInt
@@ -45,7 +49,15 @@ class ConfigureFile (filename: String) {
     }
   }
 
-  //Creating a function
+  /** Setting the direction
+   *
+   * @param value The value used to set the direction.
+   *              N represents North.
+   *              W represents West.
+   *              E represents East.
+   *              S represents South.
+   */
+
   def string_to_direction (value: String): Direction ={
     value match {
       case "N" => return Direction.N

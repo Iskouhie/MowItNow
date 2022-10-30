@@ -1,15 +1,24 @@
 package MowItNow
 import MowItNow.Direction.Direction
 
-// Creating Enumeration
+/**
+ * Direction constants.
+   * N represents North.
+   * E represents East.
+   * W represents West.
+   * S represents South.
+ */
 object Direction extends Enumeration {
   type Direction = Value
-  // Assigning values
   val N, W, E, S = Value
 }
 
 object Run {
-  // Creating a function
+  /** Running the tondeuse.
+   * @param tondeuse
+   * @param type_of_move
+   * @param config
+   */
   def run_tondeuse(tondeuse: Tondeuse, type_of_move: String, config: ConfigureFile): Unit = {
     var moves: Array[Char] = Array()
     if (type_of_move == "move1") {
@@ -26,7 +35,8 @@ object Run {
       }
     }
   }
-  // Creating the main method
+  /** The main function
+   */
   def main(args: Array[String]) {
     val config = new ConfigureFile("initials.txt")
     config.init()
